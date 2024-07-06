@@ -1,0 +1,5 @@
+project(service_locator)
+aux_source_directory(./demo SRCS)
+include_directories(./src)
+add_executable(service_locator ${SRCS})
+target_compile_features(service_locator PRIVATE cxx_std_20)
