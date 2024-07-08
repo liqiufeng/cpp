@@ -74,7 +74,10 @@ public:
     
 private:
     ServiceLocator() = default;
-    ~ServiceLocator() = default;
+    
+    ~ServiceLocator() {
+        clear();
+    }
     
 private:
     mutable std::mutex mutex_;
