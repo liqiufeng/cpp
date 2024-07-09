@@ -37,6 +37,9 @@ public:
     template <typename T>
     void registerService(std::shared_ptr<T> service) {
         static_assert(std::is_base_of_v<IService, T>, "T must inherit from IService");
+        if (!service) {
+            return;
+        }
         std::lock_guard<std::mutex> lock(mutex_);
         std::type_index index = service->getTypeIndex();
         auto it = services_.find(index);
